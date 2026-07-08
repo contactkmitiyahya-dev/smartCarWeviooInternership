@@ -1,0 +1,119 @@
+.vehicles-list-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 110px 24px 60px;
+}
+
+.vehicles-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.vehicles-list-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--c-text);
+  margin: 0 0 4px;
+}
+
+.vehicles-list-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.86rem;
+  color: var(--c-muted);
+  margin: 0;
+}
+
+.vehicles-list-add-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--c-bg);
+  background: linear-gradient(120deg, var(--c-accent) 0%, var(--c-accent2) 100%);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.vehicles-list-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.vehicles-list-search {
+  position: relative;
+  flex: 1;
+  min-width: 220px;
+  max-width: 320px;
+}
+
+.vehicles-list-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.82rem;
+  color: var(--c-muted);
+}
+
+.vehicles-list-search-input {
+  width: 100%;
+  padding: 10px 14px 10px 38px;
+  border-radius: 12px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  color: var(--c-text);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+}
+
+.vehicles-list-search-input:focus {
+  outline: none;
+  border-color: var(--c-accent);
+}
+
+.vehicles-list-filters {
+  display: flex;
+  gap: 8px;
+}
+
+.vehicles-list-filter {
+  padding: 9px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--c-border);
+  background: var(--c-surface);
+  color: var(--c-muted);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s var(--ease), color 0.18s var(--ease), border-color 0.18s var(--ease);
+}
+
+.vehicles-list-filter:hover {
+  color: var(--c-text);
+}
+
+.vehicles-list-filter-active {
+  color: var(--c-accent);
+  background: var(--c-active-bg);
+  border-color: var(--c-active-border);
+}
+
+.vehicles-list-empty {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: var(--c-muted);
+  text-align: center;
+  padding: 60px 0;
+}

@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #000000;
+  scroll-behavior: smooth;
+}
+
+/* Let auth page scroll if content exceeds screen height */
+html:has(.auth-page),
+body:has(.auth-page) {
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #f3f4f6;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(3, 179, 195, 0.3);
+  border-radius: 99px;
+  border: 2px solid #000000;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(3, 179, 195, 0.6);
+}
+
+::selection {
+  background: rgba(3, 179, 195, 0.35);
+  color: #ffffff;
+}
+
+.layout {
+  min-height: 100vh;
+  position: relative;
+  background: transparent;
+}
+
+.layout:has(.auth-page) {
+  min-height: 100vh;
+}
+
+.main-content-with-header {
+  padding-top: 110px;
+  padding-left: clamp(1rem, 5vw, 3rem);
+  padding-right: clamp(1rem, 5vw, 3rem);
+  padding-bottom: 5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.layout:has(.auth-page) .main-content-with-header {
+  padding-top: 100px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  max-width: none;
+  min-height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Header remains visible, styled transparently */
+.layout:has(.auth-page) .glass-header {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .main-content-with-header {
+    padding-top: 155px;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content-with-header {
+    padding-top: 165px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

@@ -1,0 +1,63 @@
+.health-breakdown {
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  margin-bottom: 20px;
+}
+
+.health-breakdown-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--c-text);
+  margin: 0 0 16px;
+}
+
+.health-breakdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.health-breakdown-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.health-breakdown-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+.health-breakdown-risk {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+.health-risk-low { color: #4ade80; background: rgba(74,222,128,0.10); }
+.health-risk-medium { color: #fbbf24; background: rgba(251,191,36,0.10); }
+.health-risk-high { color: #f87171; background: rgba(248,113,113,0.10); }
+
+.health-breakdown-bar-track {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+
+.health-breakdown-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.health-risk-bar-low { background: linear-gradient(90deg, #4ade80, #22d3ee); }
+.health-risk-bar-medium { background: linear-gradient(90deg, #fbbf24, #f97316); }
+.health-risk-bar-high { background: linear-gradient(90deg, #f87171, #ef4444); }

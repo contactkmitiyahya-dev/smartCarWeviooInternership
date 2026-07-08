@@ -1,0 +1,70 @@
+.risk-overview {
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  margin-bottom: 20px;
+}
+
+.risk-overview-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--c-text);
+  margin: 0 0 16px;
+}
+
+.risk-overview-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.risk-overview-item {
+  display: grid;
+  grid-template-columns: 140px 1fr 110px;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  padding: 6px 0;
+}
+
+.risk-overview-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--c-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.risk-overview-bar-track {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+
+.risk-overview-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.risk-overview-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+@media (max-width: 600px) {
+  .risk-overview-item {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .risk-overview-value {
+    text-align: left;
+  }
+}

@@ -1,0 +1,70 @@
+.service-due {
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  margin-bottom: 20px;
+}
+
+.service-due-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--c-text);
+  margin: 0 0 14px;
+}
+
+.service-due-empty {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: var(--c-muted);
+  margin: 0;
+}
+
+.service-due-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.service-due-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.service-due-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.service-due-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-due-type {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+.service-due-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.76rem;
+  color: var(--c-muted);
+}
+
+.service-due-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid;
+  flex-shrink: 0;
+}

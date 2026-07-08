@@ -1,0 +1,41 @@
+.settings-form-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: var(--c-muted);
+  margin: -10px 0 20px;
+}
+
+.language-options {
+  display: flex;
+  gap: 12px;
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: 14px;
+  border: 1px solid var(--c-border);
+  background: var(--c-surface);
+  color: var(--c-text);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.18s var(--ease), background 0.18s var(--ease);
+}
+
+.language-option:hover {
+  border-color: var(--c-border-hover);
+}
+
+.language-option-active {
+  border-color: var(--c-active-border);
+  background: var(--c-active-bg);
+  color: var(--c-accent);
+}
+
+.language-flag {
+  font-size: 1.2rem;
+}

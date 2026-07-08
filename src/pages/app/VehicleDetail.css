@@ -1,0 +1,28 @@
+.vehicle-detail-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 110px 24px 60px;
+}
+
+.vehicle-not-found {
+  font-family: 'Inter', sans-serif;
+  color: var(--c-muted);
+  text-align: center;
+}
+
+.vehicle-not-found a {
+  color: var(--c-accent);
+}
+
+.vehicle-detail-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .vehicle-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}

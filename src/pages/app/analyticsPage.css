@@ -1,0 +1,24 @@
+.analytics-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 110px 24px 60px;
+}
+
+.analytics-header {
+  margin-bottom: 24px;
+}
+
+.analytics-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--c-text);
+  margin: 0 0 4px;
+}
+
+.analytics-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: var(--c-muted);
+  margin: 0;
+}

@@ -1,0 +1,121 @@
+.vehicle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.vehicle-card {
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  border-radius: 16px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  text-decoration: none;
+  transition: border-color 0.2s var(--ease), transform 0.2s var(--spring), box-shadow 0.2s var(--ease);
+}
+
+.vehicle-card:hover {
+  border-color: var(--c-border-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+}
+
+.vehicle-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.vehicle-card-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--c-active-bg);
+  border: 1px solid var(--c-active-border);
+}
+
+.vehicle-card-icon {
+  font-size: 1.05rem;
+  color: var(--c-accent);
+}
+
+.vehicle-status-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.vehicle-status-healthy {
+  color: #4ade80;
+  background: rgba(74,222,128,0.10);
+  border: 1px solid rgba(74,222,128,0.25);
+}
+
+.vehicle-status-warning {
+  color: #fbbf24;
+  background: rgba(251,191,36,0.10);
+  border: 1px solid rgba(251,191,36,0.25);
+}
+
+.vehicle-status-critical {
+  color: #f87171;
+  background: rgba(248,113,113,0.10);
+  border: 1px solid rgba(248,113,113,0.25);
+}
+
+.vehicle-card-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--c-text);
+  margin: 0 0 4px;
+}
+
+.vehicle-card-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: var(--c-muted);
+  margin: 0 0 18px;
+}
+
+.vehicle-card-score {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.vehicle-score-bar-track {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+
+.vehicle-score-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.vehicle-score-healthy { background: linear-gradient(90deg, #4ade80, #22d3ee); }
+.vehicle-score-warning { background: linear-gradient(90deg, #fbbf24, #f97316); }
+.vehicle-score-critical { background: linear-gradient(90deg, #f87171, #ef4444); }
+
+.vehicle-score-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--c-text);
+  min-width: 24px;
+  text-align: right;
+}

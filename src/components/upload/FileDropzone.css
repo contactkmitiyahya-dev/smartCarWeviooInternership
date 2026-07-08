@@ -1,0 +1,126 @@
+.dropzone-wrapper {
+  margin-bottom: 20px;
+}
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 48px 24px;
+  border-radius: 16px;
+  border: 2px dashed var(--c-border);
+  background: var(--c-surface);
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.dropzone:hover,
+.dropzone-active {
+  border-color: var(--c-accent);
+  background: rgba(56,189,248,0.04);
+}
+
+.dropzone-icon {
+  font-size: 2rem;
+  color: var(--c-accent);
+  margin-bottom: 8px;
+}
+
+.dropzone-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--c-text);
+  margin: 0;
+}
+
+.dropzone-hint {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  color: var(--c-muted);
+  margin: 0;
+}
+
+.dropzone-input {
+  display: none;
+}
+
+.dropzone-file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.dropzone-file-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+}
+
+.dropzone-file-error {
+  border-color: rgba(248,113,113,0.4);
+  background: rgba(248,113,113,0.05);
+}
+
+.dropzone-file-icon {
+  font-size: 1rem;
+  color: var(--c-accent);
+  flex-shrink: 0;
+}
+
+.dropzone-file-error .dropzone-file-icon {
+  color: #f87171;
+}
+
+.dropzone-file-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.dropzone-file-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.84rem;
+  color: var(--c-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropzone-file-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.74rem;
+  color: var(--c-muted);
+}
+
+.dropzone-file-error .dropzone-file-meta {
+  color: #f87171;
+}
+
+.dropzone-file-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--c-muted);
+  cursor: pointer;
+  transition: background 0.18s var(--ease), color 0.18s var(--ease);
+}
+
+.dropzone-file-remove:hover {
+  background: rgba(255,255,255,0.06);
+  color: var(--c-text);
+}

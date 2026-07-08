@@ -1,0 +1,46 @@
+.app-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 110px 24px 60px;
+}
+
+.app-dashboard-header {
+  margin-bottom: 28px;
+}
+
+.app-dashboard-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--c-text);
+  margin: 0 0 6px;
+}
+
+.app-dashboard-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: var(--c-muted);
+  margin: 0;
+}
+
+.app-dashboard-grid {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.app-dashboard-section-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--c-text);
+  margin: 0 0 16px;
+}
+
+@media (max-width: 960px) {
+  .app-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}

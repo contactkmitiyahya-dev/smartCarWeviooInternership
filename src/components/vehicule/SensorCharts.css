@@ -1,0 +1,39 @@
+.sensor-charts {
+  margin-bottom: 28px;
+}
+
+.sensor-charts-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--c-text);
+  margin: 0 0 16px;
+}
+
+.sensor-chart-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.sensor-chart-card {
+  padding: 16px 16px 8px;
+  border-radius: 14px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+}
+
+.sensor-chart-label {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--c-muted);
+  margin-bottom: 4px;
+}
+
+@media (max-width: 960px) {
+  .sensor-chart-grid {
+    grid-template-columns: 1fr;
+  }
+}

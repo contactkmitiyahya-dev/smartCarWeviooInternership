@@ -1,0 +1,71 @@
+/* Social Login Cyber Aesthetic styling */
+
+.social-login {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.social-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px;
+  border-radius: 14px;
+  background: rgba(3, 7, 18, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--c-text);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 
+    background-color 0.25s var(--ease), 
+    border-color 0.25s var(--ease), 
+    box-shadow 0.25s var(--ease), 
+    transform 0.3s var(--spring);
+}
+
+/* Google Hover state */
+.social-btn:first-child:hover {
+  background-color: rgba(239, 68, 68, 0.04);
+  border-color: rgba(239, 68, 68, 0.35);
+  box-shadow: 
+    0 4px 20px rgba(239, 68, 68, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.social-btn:first-child:hover .social-icon {
+  color: #ef4444;
+  filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.8));
+}
+
+/* GitHub Hover state */
+.social-btn:last-child:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 4px 20px rgba(255, 255, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.social-btn:last-child:hover .social-icon {
+  color: #ffffff;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+}
+
+.social-btn:active {
+  transform: translateY(0);
+}
+
+.social-icon {
+  font-size: 1.05rem;
+  color: var(--c-muted);
+  transition: all 0.25s var(--ease);
+}

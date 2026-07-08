@@ -1,0 +1,75 @@
+.upload-history {
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+}
+
+.upload-history-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--c-text);
+  margin: 0 0 14px;
+}
+
+.upload-history-empty {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: var(--c-muted);
+  margin: 0;
+}
+
+.upload-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.upload-history-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.upload-history-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.upload-history-success { color: #4ade80; }
+.upload-history-partial { color: #fbbf24; }
+.upload-history-failed { color: #f87171; }
+
+.upload-history-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.upload-history-filename {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.84rem;
+  color: var(--c-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.upload-history-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.74rem;
+  color: var(--c-muted);
+}
+
+.upload-history-status {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  flex-shrink: 0;
+}

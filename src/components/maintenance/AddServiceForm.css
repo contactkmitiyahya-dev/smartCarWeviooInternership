@@ -1,0 +1,119 @@
+.add-service-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--c-border);
+  background: var(--c-surface);
+  color: var(--c-text);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background 0.18s var(--ease), transform 0.2s var(--spring);
+}
+
+.add-service-toggle:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-1px);
+}
+
+.add-service-form {
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  margin-bottom: 20px;
+}
+
+.add-service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.add-service-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.add-service-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+.add-service-input {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid var(--c-border);
+  color: var(--c-text);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+}
+
+.add-service-input:focus {
+  outline: none;
+  border-color: var(--c-accent);
+}
+
+.add-service-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.add-service-cancel {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--c-border);
+  background: transparent;
+  color: var(--c-muted);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-service-submit {
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(120deg, var(--c-accent) 0%, var(--c-accent2) 100%);
+  color: var(--c-bg);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .add-service-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.add-service-cost-auto:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+  background: rgba(255,255,255,0.015);
+}
+
+.add-service-cost-hint {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  color: var(--c-muted);
+  font-style: italic;
+  margin-top: 4px;
+  display: block;
+}
+
+select.add-service-input {
+  cursor: pointer;
+}

@@ -1,0 +1,98 @@
+.recommendation-list {
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+}
+
+.recommendation-list-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--c-text);
+  margin: 0 0 16px;
+}
+
+.recommendation-items {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.recommendation-item {
+  display: flex;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--c-border);
+}
+
+.recommendation-icon {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 2px;
+  color: var(--c-accent2);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.recommendation-text {
+  flex: 1;
+}
+
+.recommendation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.recommendation-action {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+.recommendation-urgency {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.recommendation-reasoning {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: var(--c-muted);
+  margin: 0 0 6px;
+  line-height: 1.5;
+}
+
+.recommendation-cost {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.76rem;
+  color: var(--c-accent);
+  font-weight: 600;
+}
+.recommendation-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.recommendation-vehicle-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.76rem;
+  color: var(--c-accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.recommendation-vehicle-link:hover {
+  text-decoration: underline;
+}

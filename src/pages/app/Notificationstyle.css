@@ -1,0 +1,24 @@
+.notifications-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 110px 24px 60px;
+}
+
+.notifications-header {
+  margin-bottom: 8px;
+}
+
+.notifications-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--c-text);
+  margin: 0 0 4px;
+}
+
+.notifications-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: var(--c-muted);
+  margin: 0 0 20px;
+}

@@ -1,0 +1,66 @@
+.upload-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 110px 24px 60px;
+}
+
+.upload-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: var(--c-muted);
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.upload-back-link:hover {
+  color: var(--c-text);
+}
+
+.upload-header {
+  margin-bottom: 24px;
+}
+
+.upload-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--c-text);
+  margin: 0 0 4px;
+}
+
+.upload-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: var(--c-muted);
+  margin: 0;
+}
+
+.upload-submit-btn {
+  width: 100%;
+  padding: 13px;
+  border-radius: 12px;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--c-bg);
+  background: linear-gradient(120deg, var(--c-accent) 0%, var(--c-accent2) 100%);
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: transform 0.2s var(--spring);
+}
+
+.upload-submit-btn:hover {
+  transform: translateY(-1px) scale(1.01);
+}
+
+.upload-progress-section {
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  margin-bottom: 20px;
+}

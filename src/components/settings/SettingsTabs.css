@@ -1,0 +1,38 @@
+.settings-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.settings-tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: var(--c-muted);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.18s var(--ease), color 0.18s var(--ease);
+}
+
+.settings-tab:hover {
+  background: rgba(255,255,255,0.04);
+  color: var(--c-text);
+}
+
+.settings-tab-active {
+  background: var(--c-active-bg);
+  color: var(--c-accent);
+  border: 1px solid var(--c-active-border);
+}
+
+.settings-tab-icon {
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}

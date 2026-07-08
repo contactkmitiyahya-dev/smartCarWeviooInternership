@@ -1,0 +1,129 @@
+.maintenance-timeline {
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  margin-bottom: 20px;
+}
+
+.maintenance-timeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.maintenance-timeline-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--c-text);
+  margin: 0;
+}
+
+.maintenance-timeline-total {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--c-accent);
+}
+
+.maintenance-timeline-empty {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: var(--c-muted);
+  margin: 0;
+}
+
+.timeline-track {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-entry {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  padding-bottom: 22px;
+}
+
+.timeline-entry:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-marker {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(129,140,248,0.10);
+  border: 1px solid rgba(129,140,248,0.30);
+  flex-shrink: 0;
+}
+
+.timeline-marker-icon {
+  font-size: 0.9rem;
+  color: var(--c-accent2);
+}
+
+.timeline-line {
+  position: absolute;
+  top: 34px;
+  left: 16px;
+  width: 1px;
+  height: calc(100% - 34px);
+  background: var(--c-border);
+}
+
+.timeline-content {
+  flex: 1;
+  padding-bottom: 4px;
+}
+
+.timeline-content-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+.timeline-type {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+.timeline-cost {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--c-text);
+}
+
+.timeline-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.76rem;
+  color: var(--c-muted);
+}
+
+.timeline-notes {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: var(--c-muted);
+  margin: 6px 0 0;
+  font-style: italic;
+}
+.timeline-vehicle-link {
+  color: var(--c-accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.timeline-vehicle-link:hover {
+  text-decoration: underline;
+}

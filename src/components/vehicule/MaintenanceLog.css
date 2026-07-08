@@ -1,0 +1,67 @@
+.maintenance-log {
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+}
+
+.maintenance-log-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--c-text);
+  margin: 0 0 14px;
+}
+
+.maintenance-log-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.maintenance-log-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.maintenance-log-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: rgba(129,140,248,0.10);
+  color: var(--c-accent2);
+  font-size: 0.82rem;
+  flex-shrink: 0;
+}
+
+.maintenance-log-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.maintenance-log-type {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+.maintenance-log-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.76rem;
+  color: var(--c-muted);
+}
+
+.maintenance-log-cost {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--c-text);
+}

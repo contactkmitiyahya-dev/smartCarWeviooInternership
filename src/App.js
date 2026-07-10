@@ -15,6 +15,8 @@ import GlobalMaintenance from './pages/app/GlobalMaintenance.js';
 import GlobalAnalytics from './pages/app/GlobalAnalytics.js';
 import GlobalDataUpload from './pages/app/GlobalDataUpload.js';
 import VehiclesList from './pages/app/VehiclesList.js';
+import ForgotPassword from './components/auth/ForgotPassword.js';
+import NotFound from './pages/NotFound.js';
 export default function App() {
     return (
         <Layout>
@@ -22,6 +24,7 @@ export default function App() {
             <Route path='/' element={<Dashboard/>}/>
             <Route path="/auth/login" element={<Login />} />
             <Route path="/auth/register" element={<Register />} />
+            <Route path="/auth/forgot-password" element={<ForgotPassword />} />
             <Route path="/userDashboard" element={<UserDashboard />} />
             <Route path="/vehicles" element={<VehiclesList />} />
             <Route path="/vehicles/:id" element={<VehicleDetail />} />
@@ -34,6 +37,7 @@ export default function App() {
             <Route path="/maintenance" element={<GlobalMaintenance />} />
             <Route path="/analytics" element={<GlobalAnalytics />} />
             <Route path="/upload-data" element={<GlobalDataUpload />} />
+            <Route path="*" element={<NotFound />} />
         </Routes>
         </Layout>
     );

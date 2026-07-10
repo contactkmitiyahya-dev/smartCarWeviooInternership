@@ -1,0 +1,41 @@
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 24px;
+}
+
+.not-found-icon {
+  font-size: 2.5rem;
+  color: var(--c-accent);
+  margin-bottom: 16px;
+}
+
+.not-found-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--c-text);
+  margin: 0 0 8px;
+}
+
+.not-found-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: var(--c-muted);
+  margin: 0 0 24px;
+}
+
+.not-found-link {
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--c-bg);
+  background: linear-gradient(120deg, var(--c-accent) 0%, var(--c-accent2) 100%);
+  text-decoration: none;
+}

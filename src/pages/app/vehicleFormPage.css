@@ -1,0 +1,46 @@
+.vehicle-form-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 110px 24px 60px;
+}
+
+.vehicle-form-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: var(--c-muted);
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.vehicle-form-back:hover {
+  color: var(--c-text);
+}
+
+.vehicle-form-header {
+  margin-bottom: 24px;
+}
+
+.vehicle-form-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--c-text);
+  margin: 0 0 4px;
+}
+
+.vehicle-form-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: var(--c-muted);
+  margin: 0;
+}
+
+.vehicle-form-card {
+  padding: 28px;
+  border-radius: 16px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+}

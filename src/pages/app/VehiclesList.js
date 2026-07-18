@@ -1,19 +1,57 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaPlus, FaSearch } from 'react-icons/fa';
-import { vehicles } from '../../data/testData.js';
-import VehicleCardGrid from '../../components/frontApp/VehicleCardGrid.js';
-import './VehiclesListPage.css';
+import { apiFetch, ApiError } from '../../api/client';
+import VehicleCardGrid from '../../components/frontApp/VehicleCardGrid';
+import './vehiclesListPage.css';
 
 export default function VehiclesList() {
+    const [vehicles, setVehicles] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState('');
     const [search, setSearch] = useState('');
     const [statusFilter, setStatusFilter] = useState('all');
 
-    const filtered = vehicles.filter((v) => {
+    useEffect(() => {
+        let cancelled = false;
+
+        apiFetch('/vehicles')
+            .then((data) => {
+                if (!cancelled) setVehicles(data.vehicles || []);
+            })
+            .catch((err) => {
+                if (!cancelled) setError(err instanceof ApiError ? err.message : 'Erreur de chargement.');
+            })
+            .finally(() => {
+                if (!cancelled) setIsLoading(false);
+            });
+
+        return () => { cancelled = true; };
+    }, []);
+
+    const mappedVehicles = vehicles.map(v => ({
+        id: v.id,
+        make: v.make,
+        model: v.model,
+        year: v.year,
+        mileage: v.current_mileage_km,
+        healthScore: v.health_score ?? 100,
+        status: (v.health_score ?? 100) >= 70 ? 'healthy' : (v.health_score ?? 100) >= 40 ? 'warning' : 'critical'
+    }));
+
+    const filtered = mappedVehicles.filter((v) => {
         const matchesSearch = `${v.make} ${v.model}`.toLowerCase().includes(search.toLowerCase());
         const matchesStatus = statusFilter === 'all' || v.status === statusFilter;
         return matchesSearch && matchesStatus;
     });
+
+    if (isLoading) {
+        return <main className="vehicles-list-page"><p className="dashboard-loading">Chargement...</p></main>;
+    }
+
+    if (error) {
+        return <main className="vehicles-list-page"><p className="dashboard-error">{error}</p></main>;
+    }
 
     return (
         <main className="vehicles-list-page">
@@ -55,6 +93,8 @@ export default function VehiclesList() {
 
             {filtered.length > 0 ? (
                 <VehicleCardGrid vehicles={filtered} />
+            ) : vehicles.length === 0 ? (
+                <p className="vehicles-list-empty">Aucun véhicule enregistré. Ajoutez-en un pour commencer.</p>
             ) : (
                 <p className="vehicles-list-empty">Aucun véhicule ne correspond à ta recherche.</p>
             )}

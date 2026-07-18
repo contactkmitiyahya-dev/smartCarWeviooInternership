@@ -1,24 +1,27 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
-import AuthLayout from './AuthLayout';
-import SocialLoginButtons from './SocialLoginButtons';
-import './Login.css';
+import AuthLayout from '../../components/auth/AuthLayout';
+import SocialLoginButtons from '../../components/auth/SocialLoginButtons';
+import { useAuth } from '../../context/AuthContext';
+import { ApiError } from '../../api/client';
+import '../../components/auth/authForm.css';
 
 export default function Register() {
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
+        name: '', email: '', password: '', confirmPassword: ''
     });
     const [error, setError] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const { register } = useAuth();
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
         setError('');
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (formData.password !== formData.confirmPassword) {
@@ -31,7 +34,21 @@ export default function Register() {
             return;
         }
 
-        console.log('Register submit', formData);
+        setIsSubmitting(true);
+        setError('');
+
+        try {
+            await register(formData.name, formData.email, formData.password);
+            navigate('/userDashboard');
+        } catch (err) {
+            if (err instanceof ApiError) {
+                setError(err.message);
+            } else {
+                setError('Impossible de se connecter au serveur. Réessaie plus tard.');
+            }
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -40,7 +57,7 @@ export default function Register() {
             subtitle="Commencez à surveiller vos véhicules gratuitement"
             footerText="Vous avez déjà un compte ?"
             footerLinkText="Se connecter"
-            footerLinkPath="/auth/login"
+            footerLinkPath="/userDashboard"
         >
             <SocialLoginButtons />
 
@@ -115,8 +132,8 @@ export default function Register() {
 
                 {error && <p className="auth-error">{error}</p>}
 
-                <button type="submit" className="auth-submit">
-                    Créer mon compte
+                <button type="submit" className="auth-submit" disabled={isSubmitting}>
+                    {isSubmitting ? 'Création...' : 'Créer mon compte'}
                 </button>
             </form>
         </AuthLayout>

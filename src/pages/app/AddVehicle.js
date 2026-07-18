@@ -1,15 +1,36 @@
+import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
-import VehicleForm from '../../components/vehicle/VehicleForm';
+import { apiFetch, ApiError } from '../../api/client';
+import VehicleForm from '../../components/vehicule/VehicleForm';
 import './vehicleFormPage.css';
 
 export default function AddVehicle() {
     const navigate = useNavigate();
+    const [error, setError] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const handleSubmit = (data) => {
-        console.log('Nouveau véhicule', data);
-        // Pas de backend encore : on simule un ajout réussi et on redirige
-        navigate('/vehicles');
+    const handleSubmit = async (data) => {
+        setIsSubmitting(true);
+        setError('');
+
+        try {
+            await apiFetch('/vehicles', {
+                method: 'POST',
+                body: JSON.stringify({
+                    make: data.make,
+                    model: data.model,
+                    year: Number(data.year),
+                    vin: data.vin || null,
+                    plate_number: data.plate || null,
+                    current_mileage_km: Number(data.mileage)
+                })
+            });
+            navigate('/vehicles');
+        } catch (err) {
+            setError(err instanceof ApiError ? err.message : 'Erreur lors de l\'ajout du véhicule.');
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -24,7 +45,11 @@ export default function AddVehicle() {
             </div>
 
             <div className="vehicle-form-card">
-                <VehicleForm onSubmit={handleSubmit} submitLabel="Ajouter le véhicule" />
+                {error && <p className="auth-error" style={{ marginBottom: '16px' }}>{error}</p>}
+                <VehicleForm
+                    onSubmit={handleSubmit}
+                    submitLabel={isSubmitting ? 'Ajout en cours...' : 'Ajouter le véhicule'}
+                />
             </div>
         </main>
     );

@@ -106,7 +106,7 @@ function getHealthSummary() {
 var vehicleDetails = exports.vehicleDetails = {
   v1: {
     vin: '1HGCM82633A123456',
-    plate: 'AB-123-CD',
+    plate: '200 tunis 1000',
     photo: null,
     componentHealth: [{
       name: 'Moteur',

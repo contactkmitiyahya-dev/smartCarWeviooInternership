@@ -1,0 +1,4 @@
+timestamp,engine_rpm,coolant_temp_c,control_module_voltage_v
+2026-07-01T10:00:00Z,2100,88,12.6
+2026-07-02T10:00:00Z,2200,90,12.5
+2026-07-03T10:00:00Z,2050,87,12.6

@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = Layout;
 var _navbar = _interopRequireDefault(require("./navbar.js"));
+var _Footer = _interopRequireDefault(require("./landing/Footer.js"));
 var _Hyperspeed = _interopRequireDefault(require("./stylingComposants/Hyperspeed.js"));
 require("./Layout.css");
 var _jsxRuntime = require("react/jsx-runtime");
@@ -53,6 +54,6 @@ function Layout(_ref) {
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_navbar["default"], {}), /*#__PURE__*/(0, _jsxRuntime.jsx)("main", {
       className: "main-content-with-header",
       children: children
-    })]
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Footer["default"], {})]
   });
 }

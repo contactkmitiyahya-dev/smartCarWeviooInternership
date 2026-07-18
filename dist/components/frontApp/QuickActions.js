@@ -18,7 +18,7 @@ function QuickActions() {
         className: "quick-action-icon"
       }), "Ajouter un v\xE9hicule"]
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRouterDom.Link, {
-      to: "/dashboard",
+      to: "/upload-data",
       className: "quick-action-btn",
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_fa.FaCloudUploadAlt, {
         className: "quick-action-icon"

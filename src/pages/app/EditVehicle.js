@@ -1,28 +1,60 @@
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
-import { getVehicleById } from '../../data/mockData';
-import VehicleForm from '../../components/vehicle/VehicleForm';
+import { apiFetch, ApiError } from '../../api/client';
+import VehicleForm from '../../components/vehicule/VehicleForm';
 import './vehicleFormPage.css';
 
 export default function EditVehicle() {
     const { id } = useParams();
     const navigate = useNavigate();
-    const vehicle = getVehicleById(id);
+    const [vehicle, setVehicle] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState('');
 
-    if (!vehicle) {
+    useEffect(() => {
+        let cancelled = false;
+
+        apiFetch(`/vehicles/${id}`)
+            .then((data) => { if (!cancelled) setVehicle(data.vehicle); })
+            .catch((err) => { if (!cancelled) setError(err instanceof ApiError ? err.message : 'Véhicule introuvable.'); })
+            .finally(() => { if (!cancelled) setIsLoading(false); });
+
+        return () => { cancelled = true; };
+    }, [id]);
+
+    const handleSubmit = async (data) => {
+        try {
+            await apiFetch(`/vehicles/${id}`, {
+                method: 'PATCH',
+                body: JSON.stringify({
+                    make: data.make,
+                    model: data.model,
+                    year: Number(data.year),
+                    vin: data.vin || null,
+                    plate_number: data.plate || null,
+                    current_mileage_km: Number(data.mileage)
+                })
+            });
+            navigate(`/vehicles/${id}`);
+        } catch (err) {
+            setError(err instanceof ApiError ? err.message : 'Erreur lors de la mise à jour.');
+        }
+    };
+
+    if (isLoading) {
+        return <main className="vehicle-form-page"><p className="dashboard-loading">Chargement...</p></main>;
+    }
+
+    if (error && !vehicle) {
         return (
             <main className="vehicle-form-page">
                 <p className="vehicle-not-found">
-                    Véhicule introuvable. <Link to="/dashboard">Retour au tableau de bord</Link>
+                    {error} <Link to="/dashboard">Retour au tableau de bord</Link>
                 </p>
             </main>
         );
     }
-
-    const handleSubmit = (data) => {
-        console.log('Véhicule modifié', id, data);
-        navigate(`/vehicles/${id}`);
-    };
 
     return (
         <main className="vehicle-form-page">
@@ -36,14 +68,15 @@ export default function EditVehicle() {
             </div>
 
             <div className="vehicle-form-card">
+                {error && <p className="auth-error" style={{ marginBottom: '16px' }}>{error}</p>}
                 <VehicleForm
                     initialData={{
                         make: vehicle.make,
                         model: vehicle.model,
                         year: vehicle.year,
                         vin: vehicle.vin,
-                        plate: vehicle.plate,
-                        mileage: vehicle.mileage
+                        plate: vehicle.plate_number,
+                        mileage: vehicle.current_mileage_km
                     }}
                     onSubmit={handleSubmit}
                     submitLabel="Enregistrer les modifications"

@@ -15,6 +15,6 @@ var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function Dashboard() {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_hero["default"], {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FeatureGrid["default"], {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_HowItWorks["default"], {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_StatsBanner["default"], {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_CTASection["default"], {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Footer["default"], {})]
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_hero["default"], {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FeatureGrid["default"], {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_HowItWorks["default"], {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_StatsBanner["default"], {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_CTASection["default"], {})]
   });
 }

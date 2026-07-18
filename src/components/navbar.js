@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
     FaHome,
     FaCar,
@@ -10,13 +10,16 @@ import {
     FaCog,
     FaInfoCircle,
     FaDollarSign,
-    FaEnvelope
+    FaEnvelope,
+    FaSignOutAlt
 } from 'react-icons/fa';
+import { useAuth } from '../context/AuthContext';
 import './navbar.css';
 
 export default function Navbar() {
     const location = useLocation();
-    const isAuthentificated = true;
+    const navigate = useNavigate();
+    const { isAuthenticated, isLoading, logout } = useAuth();
     const isActive = (path) => location.pathname === path ? 'active' : '';
 
     const appNavItems = [
@@ -32,12 +35,29 @@ export default function Navbar() {
         { path: '/contact', label: 'Contact', icon: FaEnvelope },
     ];
 
-    const navItems = isAuthentificated ? appNavItems : landingNavItems;
+    const navItems = isAuthenticated ? appNavItems : landingNavItems;
+
+    const handleLogout = async () => {
+        await logout();
+        navigate('/');
+    };
+
+    if (isLoading) {
+        return (
+            <header className="glass-header">
+                <div className="header-brand">
+                    <Link to="/" className="logo-link">
+                        <span className="logo-text">SmartCar</span>
+                    </Link>
+                </div>
+            </header>
+        );
+    }
 
     return (
         <header className="glass-header">
             <div className="header-brand">
-                <Link to={isAuthentificated ? '/userDashboard' : '/'} className="logo-link">
+                <Link to={isAuthenticated ? '/dashboard' : '/'} className="logo-link">
                     <FaCar className="logo-icon" />
                     <span className="logo-text">SmartCar</span>
                 </Link>
@@ -60,7 +80,7 @@ export default function Navbar() {
             </nav>
 
             <div className="header-auth">
-                {isAuthentificated ? (
+                {isAuthenticated ? (
                     <>
                         <Link to="/notifications" className={`icon-btn ${isActive('/notifications')}`}>
                             <FaBell className="notif-icon" />
@@ -72,6 +92,9 @@ export default function Navbar() {
                             <FaUserCircle className="profile-icon" />
                             <span className="profile-label">Profil</span>
                         </Link>
+                        <button type="button" className="icon-btn" onClick={handleLogout} title="Se déconnecter">
+                            <FaSignOutAlt className="notif-icon" />
+                        </button>
                     </>
                 ) : (
                     <>

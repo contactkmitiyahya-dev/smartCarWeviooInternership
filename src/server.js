@@ -5,14 +5,16 @@ import { StaticRouter } from 'react-router-dom/server';
 import App from './App';
 
 const app = express();
+app.set('etag', false);
 const PORT = process.env.PORT || 3000;
+const { AuthProvider } = require('./context/AuthContext');
 
 app.use(express.static('public'));
 
 app.get('/{*splat}', (req, res) => {
   const html = renderToString(
     React.createElement(StaticRouter, { location: req.url },
-      React.createElement(App)
+      React.createElement(AuthProvider, null, React.createElement(App))
     )
   );
 

@@ -17,6 +17,9 @@ import GlobalDataUpload from './pages/app/GlobalDataUpload.js';
 import VehiclesList from './pages/app/VehiclesList.js';
 import ForgotPassword from './components/auth/ForgotPassword.js';
 import NotFound from './pages/NotFound.js';
+import ProtectedRoute from './components/ProtectedRoute.js';
+import AddVehicle from './pages/app/AddVehicle.js'; 
+import EditVehicle from './pages/app/EditVehicle.js'
 export default function App() {
     return (
         <Layout>
@@ -25,18 +28,20 @@ export default function App() {
             <Route path="/auth/login" element={<Login />} />
             <Route path="/auth/register" element={<Register />} />
             <Route path="/auth/forgot-password" element={<ForgotPassword />} />
-            <Route path="/userDashboard" element={<UserDashboard />} />
-            <Route path="/vehicles" element={<VehiclesList />} />
-            <Route path="/vehicles/:id" element={<VehicleDetail />} />
-            <Route path="/vehicles/:id/upload" element={<DataUpload />} />
-            <Route path="/vehicles/:id/predictions" element={<Predictions />} />
-            <Route path="/vehicles/:id/maintenance" element={<Maintenance />} />
-            <Route path="/notifications" element={<Notifications />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/maintenance" element={<GlobalMaintenance />} />
-            <Route path="/analytics" element={<GlobalAnalytics />} />
-            <Route path="/upload-data" element={<GlobalDataUpload />} />
+            <Route path="/userDashboard" element={<ProtectedRoute><UserDashboard /></ProtectedRoute>} />
+            <Route path="/vehicles" element={<ProtectedRoute><VehiclesList /></ProtectedRoute>} />
+            <Route path="/vehicles/new" element={<ProtectedRoute><AddVehicle /></ProtectedRoute>} />
+            <Route path="/vehicles/:id" element={<ProtectedRoute><VehicleDetail /></ProtectedRoute>} />
+            <Route path="/vehicles/:id/edit" element={<ProtectedRoute><EditVehicle /></ProtectedRoute>} />
+            <Route path="/vehicles/:id/upload" element={<ProtectedRoute><DataUpload /></ProtectedRoute>} />
+            <Route path="/vehicles/:id/predictions" element={<ProtectedRoute><Predictions /></ProtectedRoute>} />
+            <Route path="/vehicles/:id/maintenance" element={<ProtectedRoute><Maintenance /></ProtectedRoute>} />
+            <Route path="/notifications" element={<ProtectedRoute><Notifications /></ProtectedRoute>} />
+            <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
+            <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+            <Route path="/maintenance" element={<ProtectedRoute><GlobalMaintenance /></ProtectedRoute>} />
+            <Route path="/analytics" element={<ProtectedRoute><GlobalAnalytics /></ProtectedRoute>} />
+            <Route path="/upload-data" element={<ProtectedRoute><GlobalDataUpload /></ProtectedRoute>} />
             <Route path="*" element={<NotFound />} />
         </Routes>
         </Layout>

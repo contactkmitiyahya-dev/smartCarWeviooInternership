@@ -64,3 +64,21 @@
   border: 1px solid var(--c-border);
   margin-bottom: 20px;
 }
+
+@media (max-width: 768px) {
+  .upload-page {
+    padding: 155px 16px 40px;
+  }
+  .upload-title {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .upload-page {
+    padding: 170px 12px 32px;
+  }
+  .upload-title {
+    font-size: 1.15rem;
+  }
+}

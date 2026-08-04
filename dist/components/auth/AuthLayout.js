@@ -35,7 +35,6 @@ function AuthLayout(_ref) {
     var interval = setInterval(function () {
       setLogs(function (prev) {
         var nextMsg = TELEMETRY_MESSAGES[Math.floor(Math.random() * TELEMETRY_MESSAGES.length)];
-        // Keep the last 6 logs
         return [].concat(_toConsumableArray(prev.slice(-5)), [nextMsg]);
       });
     }, 2500);

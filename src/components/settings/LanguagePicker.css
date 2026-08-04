@@ -39,3 +39,15 @@
 .language-flag {
   font-size: 1.2rem;
 }
+
+@media (max-width: 480px) {
+  .language-options {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+  .language-option {
+    width: 100%;
+    justify-content: center;
+  }
+}

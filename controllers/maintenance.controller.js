@@ -37,11 +37,12 @@ async function getAllMaintenanceForUser(req, res) {
     try {
         const result = await pool.query(
             `SELECT mr.id, mr.service_date, mr.service_type, mr.mileage_at_service_km,
-                    mr.cost, mr.notes, v.id AS vehicle_id, v.make, v.model
-             FROM maintenance_records mr
-             JOIN vehicles v ON v.id = mr.vehicle_id
-             WHERE v.user_id = $1 AND v.is_deleted = false
-             ORDER BY mr.service_date DESC`,
+       mr.cost, mr.notes, mr.next_due_date, mr.next_due_km,
+       v.id AS vehicle_id, v.make, v.model
+FROM maintenance_records mr
+JOIN vehicles v ON v.id = mr.vehicle_id
+WHERE v.user_id = $1 AND v.is_deleted = false
+ORDER BY mr.service_date DESC`,
             [req.user.id]
         );
 

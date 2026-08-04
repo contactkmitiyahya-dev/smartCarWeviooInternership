@@ -1,25 +1,52 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
+import { apiFetch, ApiError } from '../../api/client';
+import { useAuth } from '../../context/AuthContext';
 import './profileForm.css';
 
 export default function ProfileForm() {
-    const [formData, setFormData] = useState({
-        name: 'Jean Dupont',
-        email: 'jean.dupont@exemple.com',
-        currentPassword: '',
-        newPassword: ''
-    });
+    const { user } = useAuth();
+    const [formData, setFormData] = useState({ name: '', email: '', currentPassword: '', newPassword: '' });
     const [saved, setSaved] = useState(false);
+    const [error, setError] = useState('');
+
+    useEffect(() => {
+        if (user) {
+            setFormData((prev) => ({ ...prev, name: user.name, email: user.email }));
+        }
+    }, [user]);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
         setSaved(false);
+        setError('');
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Profile update', formData);
-        setSaved(true);
+        setError('');
+
+        try {
+            await apiFetch('/auth/me', {
+                method: 'PATCH',
+                body: JSON.stringify({ name: formData.name, email: formData.email })
+            });
+
+            if (formData.currentPassword && formData.newPassword) {
+                await apiFetch('/auth/change-password', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        currentPassword: formData.currentPassword,
+                        newPassword: formData.newPassword
+                    })
+                });
+                setFormData({ ...formData, currentPassword: '', newPassword: '' });
+            }
+
+            setSaved(true);
+        } catch (err) {
+            setError(err instanceof ApiError ? err.message : 'Erreur lors de la mise à jour.');
+        }
     };
 
     return (
@@ -30,13 +57,7 @@ export default function ProfileForm() {
                 <label className="settings-label">Nom complet</label>
                 <div className="settings-input-wrap">
                     <FaUser className="settings-input-icon" />
-                    <input
-                        type="text"
-                        name="name"
-                        className="settings-input"
-                        value={formData.name}
-                        onChange={handleChange}
-                    />
+                    <input type="text" name="name" className="settings-input" value={formData.name} onChange={handleChange} />
                 </div>
             </div>
 
@@ -44,13 +65,7 @@ export default function ProfileForm() {
                 <label className="settings-label">Email</label>
                 <div className="settings-input-wrap">
                     <FaEnvelope className="settings-input-icon" />
-                    <input
-                        type="email"
-                        name="email"
-                        className="settings-input"
-                        value={formData.email}
-                        onChange={handleChange}
-                    />
+                    <input type="email" name="email" className="settings-input" value={formData.email} onChange={handleChange} />
                 </div>
             </div>
 
@@ -60,14 +75,7 @@ export default function ProfileForm() {
                 <label className="settings-label">Mot de passe actuel</label>
                 <div className="settings-input-wrap">
                     <FaLock className="settings-input-icon" />
-                    <input
-                        type="password"
-                        name="currentPassword"
-                        className="settings-input"
-                        placeholder="••••••••"
-                        value={formData.currentPassword}
-                        onChange={handleChange}
-                    />
+                    <input type="password" name="currentPassword" className="settings-input" placeholder="••••••••" value={formData.currentPassword} onChange={handleChange} />
                 </div>
             </div>
 
@@ -75,16 +83,11 @@ export default function ProfileForm() {
                 <label className="settings-label">Nouveau mot de passe</label>
                 <div className="settings-input-wrap">
                     <FaLock className="settings-input-icon" />
-                    <input
-                        type="password"
-                        name="newPassword"
-                        className="settings-input"
-                        placeholder="••••••••"
-                        value={formData.newPassword}
-                        onChange={handleChange}
-                    />
+                    <input type="password" name="newPassword" className="settings-input" placeholder="••••••••" value={formData.newPassword} onChange={handleChange} />
                 </div>
             </div>
+
+            {error && <p className="auth-error">{error}</p>}
 
             <div className="settings-form-actions">
                 {saved && <span className="settings-saved-hint">Modifications enregistrées</span>}

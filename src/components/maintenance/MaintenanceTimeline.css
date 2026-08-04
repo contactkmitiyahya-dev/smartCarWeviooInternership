@@ -127,3 +127,14 @@
 .timeline-vehicle-link:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 480px) {
+  .timeline-content-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  .timeline-entry {
+    gap: 10px;
+  }
+}

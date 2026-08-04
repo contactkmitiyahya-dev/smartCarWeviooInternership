@@ -122,11 +122,44 @@
 @media (max-width: 768px) {
   .vehicle-header-main {
     flex-wrap: wrap;
+    gap: 16px;
   }
 
   .vehicle-header-score {
     border: none;
     padding: 0;
+    flex-direction: row;
+    gap: 8px;
+    align-items: baseline;
+  }
+
+  .vehicle-header-actions {
+    width: 100%;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .vehicle-header-edit,
+  .vehicle-header-upload {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.78rem;
+    padding: 9px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .vehicle-header-title {
+    font-size: 1.15rem;
+  }
+
+  .vehicle-header-photo {
+    width: 52px;
+    height: 52px;
+  }
+
+  .vehicle-header-photo-icon {
+    font-size: 1.3rem;
   }
 }
 .vehicle-header-actions {

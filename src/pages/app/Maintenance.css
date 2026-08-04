@@ -50,3 +50,27 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 768px) {
+  .maintenance-page {
+    padding: 155px 16px 40px;
+  }
+
+  .maintenance-title {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .maintenance-page {
+    padding: 170px 12px 32px;
+  }
+
+  .maintenance-title {
+    font-size: 1.1rem;
+  }
+
+  .maintenance-subtitle {
+    font-size: 0.82rem;
+  }
+}

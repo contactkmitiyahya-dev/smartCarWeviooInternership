@@ -26,13 +26,34 @@
   border: 1px solid var(--c-border);
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
+  .settings-page {
+    padding: 155px 16px 40px;
+  }
+
   .settings-layout {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .settings-tabs {
     flex-direction: row;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+  }
+
+  .settings-content {
+    padding: 20px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .settings-page {
+    padding: 170px 12px 32px;
+  }
+
+  .settings-page-title {
+    font-size: 1.3rem;
   }
 }

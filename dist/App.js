@@ -26,6 +26,7 @@ var _NotFound = _interopRequireDefault(require("./pages/NotFound.js"));
 var _ProtectedRoute = _interopRequireDefault(require("./components/ProtectedRoute.js"));
 var _AddVehicle = _interopRequireDefault(require("./pages/app/AddVehicle.js"));
 var _EditVehicle = _interopRequireDefault(require("./pages/app/EditVehicle.js"));
+var _AuthCallback = _interopRequireDefault(require("./context/AuthCallback.js"));
 var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function App() {
@@ -44,6 +45,9 @@ function App() {
         path: "/auth/forgot-password",
         element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ForgotPassword["default"], {})
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
+        path: "/auth/callback",
+        element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_AuthCallback["default"], {})
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
         path: "/userDashboard",
         element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ProtectedRoute["default"], {
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_userDashboard["default"], {})
@@ -59,14 +63,14 @@ function App() {
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_AddVehicle["default"], {})
         })
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
-        path: "/vehicles/edit",
-        element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ProtectedRoute["default"], {
-          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_EditVehicle["default"], {})
-        })
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
         path: "/vehicles/:id",
         element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ProtectedRoute["default"], {
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_VehicleDetail["default"], {})
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
+        path: "/vehicles/:id/edit",
+        element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ProtectedRoute["default"], {
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_EditVehicle["default"], {})
         })
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
         path: "/vehicles/:id/upload",

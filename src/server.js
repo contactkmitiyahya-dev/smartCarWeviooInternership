@@ -7,6 +7,9 @@ import App from './App';
 const app = express();
 app.set('etag', false);
 const PORT = process.env.PORT || 3000;
+require('../config/passport.js');
+const passport = require('passport');
+app.use(passport.initialize())
 const { AuthProvider } = require('./context/AuthContext');
 
 app.use(express.static('public'));

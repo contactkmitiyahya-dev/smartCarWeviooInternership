@@ -7,7 +7,7 @@ exports["default"] = VehicleHeader;
 var _reactRouterDom = require("react-router-dom");
 var _fa = require("react-icons/fa");
 require("./vehicleHeader.css");
-require("../../pages/app/Maintenance.css");
+require("../../pages/app/maintenance.css");
 var _jsxRuntime = require("react/jsx-runtime");
 function VehicleHeader(_ref) {
   var vehicle = _ref.vehicle;

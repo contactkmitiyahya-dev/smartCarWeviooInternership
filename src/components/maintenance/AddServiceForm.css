@@ -117,3 +117,26 @@
 select.add-service-input {
   cursor: pointer;
 }
+.add-service-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 4px 0 16px;
+}
+
+.add-service-divider::before,
+.add-service-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--c-border);
+}
+
+.add-service-divider span {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  color: var(--c-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}

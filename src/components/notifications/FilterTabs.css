@@ -41,3 +41,17 @@
 .filter-tab-active .filter-tab-count {
   background: rgba(56,189,248,0.15);
 }
+
+@media (max-width: 600px) {
+  .filter-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+    gap: 6px;
+  }
+  .filter-tab {
+    flex-shrink: 0;
+    padding: 8px 12px;
+    font-size: 0.78rem;
+  }
+}

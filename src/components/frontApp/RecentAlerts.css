@@ -88,3 +88,16 @@
   flex-shrink: 0;
   opacity: 0.7;
 }
+
+@media (max-width: 480px) {
+  .recent-alerts {
+    padding: 16px 12px;
+  }
+  .alert-item {
+    gap: 8px;
+    padding: 10px 6px;
+  }
+  .alert-item-message {
+    font-size: 0.8rem;
+  }
+}

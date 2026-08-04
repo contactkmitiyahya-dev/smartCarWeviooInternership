@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FaWrench, FaChartLine, FaCar, FaArrowLeft, FaEdit, FaCloudUploadAlt } from 'react-icons/fa';
 import './vehicleHeader.css';
-import '../../pages/app/Maintenance.css';
+import '../../pages/app/maintenance.css';
 
 export default function VehicleHeader({ vehicle }) {
     return (

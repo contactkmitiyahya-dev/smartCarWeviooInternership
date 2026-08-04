@@ -1,5 +1,6 @@
 require('ignore-styles');
 require('dotenv').config();
+require('../config/passport.js');
 const express = require('express');
 require('@babel/register')({
   presets: [
@@ -26,6 +27,8 @@ const app = express();
 app.set('etag', false);
 const compiler = webpack(require('../webpack.config'));
 
+const passport = require('passport');
+app.use(passport.initialize())
 app.use(express.json()); 
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/vehicles', vehicleRoutes);

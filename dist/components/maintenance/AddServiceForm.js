@@ -33,7 +33,9 @@ function AddServiceForm(_ref) {
       date: '',
       mileage: '',
       cost: '',
-      notes: ''
+      notes: '',
+      nextDueDate: '',
+      nextDueMileage: ''
     }),
     _useState4 = _slicedToArray(_useState3, 2),
     formData = _useState4[0],
@@ -57,14 +59,18 @@ function AddServiceForm(_ref) {
       date: formData.date,
       mileage: Number(formData.mileage),
       cost: Number(formData.cost),
-      notes: formData.notes
+      notes: formData.notes,
+      nextDueDate: formData.nextDueDate || null,
+      nextDueMileage: formData.nextDueMileage ? Number(formData.nextDueMileage) : null
     });
     setFormData({
       type: '',
       date: '',
       mileage: '',
       cost: '',
-      notes: ''
+      notes: '',
+      nextDueDate: '',
+      nextDueMileage: ''
     });
     setIsOpen(false);
   };
@@ -148,6 +154,39 @@ function AddServiceForm(_ref) {
         }), formData.type && formData.type !== 'Autre' && /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           className: "add-service-cost-hint",
           children: "Prix estim\xE9 automatiquement selon le type s\xE9lectionn\xE9"
+        })]
+      })]
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: "add-service-divider",
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        children: "Prochaine \xE9ch\xE9ance (optionnel)"
+      })
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      className: "add-service-grid",
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        className: "add-service-field",
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+          className: "add-service-label",
+          children: "Date d'\xE9ch\xE9ance"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
+          type: "date",
+          name: "nextDueDate",
+          className: "add-service-input",
+          value: formData.nextDueDate,
+          onChange: handleChange
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        className: "add-service-field",
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+          className: "add-service-label",
+          children: "Kilom\xE9trage d'\xE9ch\xE9ance"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
+          type: "number",
+          name: "nextDueMileage",
+          className: "add-service-input",
+          placeholder: "ex : 50000",
+          value: formData.nextDueMileage,
+          onChange: handleChange
         })]
       })]
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {

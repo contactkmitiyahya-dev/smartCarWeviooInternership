@@ -30,7 +30,6 @@ export default function AuthLayout({ title, subtitle, children, footerText, foot
         const interval = setInterval(() => {
             setLogs((prev) => {
                 const nextMsg = TELEMETRY_MESSAGES[Math.floor(Math.random() * TELEMETRY_MESSAGES.length)];
-                // Keep the last 6 logs
                 return [...prev.slice(-5), nextMsg];
             });
         }, 2500);

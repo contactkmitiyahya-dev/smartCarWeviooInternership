@@ -9,6 +9,9 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default":
 var app = (0, _express["default"])();
 app.set('etag', false);
 var PORT = process.env.PORT || 3000;
+require('../config/passport.js');
+var passport = require('passport');
+app.use(passport.initialize());
 var _require = require('./context/AuthContext'),
   AuthProvider = _require.AuthProvider;
 app.use(_express["default"]["static"]('public'));

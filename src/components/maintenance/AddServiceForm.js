@@ -7,7 +7,10 @@ const serviceTypes = Object.keys(serviceCostCatalog);
 
 export default function AddServiceForm({ onAdd }) {
     const [isOpen, setIsOpen] = useState(false);
-    const [formData, setFormData] = useState({ type: '', date: '', mileage: '', cost: '', notes: '' });
+    const [formData, setFormData] = useState({
+        type: '', date: '', mileage: '', cost: '', notes: '',
+        nextDueDate: '', nextDueMileage: ''
+    });
 
     const handleTypeChange = (e) => {
         const selectedType = e.target.value;
@@ -30,9 +33,11 @@ export default function AddServiceForm({ onAdd }) {
             date: formData.date,
             mileage: Number(formData.mileage),
             cost: Number(formData.cost),
-            notes: formData.notes
+            notes: formData.notes,
+            nextDueDate: formData.nextDueDate || null,
+            nextDueMileage: formData.nextDueMileage ? Number(formData.nextDueMileage) : null
         });
-        setFormData({ type: '', date: '', mileage: '', cost: '', notes: '' });
+        setFormData({ type: '', date: '', mileage: '', cost: '', notes: '', nextDueDate: '', nextDueMileage: '' });
         setIsOpen(false);
     };
 
@@ -104,6 +109,35 @@ export default function AddServiceForm({ onAdd }) {
                             Prix estimé automatiquement selon le type sélectionné
                         </span>
                     )}
+                </div>
+            </div>
+
+            <div className="add-service-divider">
+                <span>Prochaine échéance (optionnel)</span>
+            </div>
+
+            <div className="add-service-grid">
+                <div className="add-service-field">
+                    <label className="add-service-label">Date d'échéance</label>
+                    <input
+                        type="date"
+                        name="nextDueDate"
+                        className="add-service-input"
+                        value={formData.nextDueDate}
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div className="add-service-field">
+                    <label className="add-service-label">Kilométrage d'échéance</label>
+                    <input
+                        type="number"
+                        name="nextDueMileage"
+                        className="add-service-input"
+                        placeholder="ex : 50000"
+                        value={formData.nextDueMileage}
+                        onChange={handleChange}
+                    />
                 </div>
             </div>
 

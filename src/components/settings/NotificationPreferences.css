@@ -83,3 +83,28 @@
 .notif-toggle-on .notif-toggle-knob {
   transform: translateX(18px);
 }
+
+@media (max-width: 480px) {
+  .notif-prefs-row {
+    grid-template-columns: 1fr 55px 55px;
+    padding: 12px 10px;
+    gap: 8px;
+  }
+  .notif-prefs-label {
+    font-size: 0.8rem;
+  }
+  .notif-prefs-desc {
+    font-size: 0.7rem;
+  }
+  .notif-toggle {
+    width: 36px;
+    height: 20px;
+  }
+  .notif-toggle-knob {
+    width: 14px;
+    height: 14px;
+  }
+  .notif-toggle-on .notif-toggle-knob {
+    transform: translateX(16px);
+  }
+}

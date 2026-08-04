@@ -1,17 +1,46 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaUserCircle, FaEdit, FaCar, FaExclamationTriangle, FaCalendarAlt } from 'react-icons/fa';
-import { vehicles, allNotifications } from '../../data/testData.js';
+import { apiFetch, ApiError } from '../../api/client';
 import './profilePage.css';
 
-const currentUser = {
-    name: 'Jean Dupont',
-    email: 'jean.dupont@exemple.com',
-    memberSince: 'Janvier 2026',
-    role: 'Utilisateur standard'
-};
-
 export default function Profile() {
-    const activeAlerts = allNotifications.filter(n => !n.acknowledged).length;
+    const [user, setUser] = useState(null);
+    const [vehicleCount, setVehicleCount] = useState(0);
+    const [activeAlerts, setActiveAlerts] = useState(0);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState('');
+
+    useEffect(() => {
+        let cancelled = false;
+
+        Promise.all([
+            apiFetch('/auth/me'),
+            apiFetch('/vehicles'),
+            apiFetch('/notifications')
+        ]).then(([meData, vehiclesData, notifData]) => {
+            if (cancelled) return;
+            setUser(meData.user);
+            setVehicleCount((vehiclesData.vehicles || []).length);
+            setActiveAlerts((notifData.notifications || []).filter(n => !n.is_read).length);
+        }).catch((err) => {
+            if (!cancelled) setError(err instanceof ApiError ? err.message : 'Erreur de chargement.');
+        }).finally(() => {
+            if (!cancelled) setIsLoading(false);
+        });
+
+        return () => { cancelled = true; };
+    }, []);
+
+    if (isLoading) {
+        return <main className="profile-page"><p className="dashboard-loading">Chargement...</p></main>;
+    }
+
+    if (error || !user) {
+        return <main className="profile-page"><p className="dashboard-error">{error || 'Profil introuvable.'}</p></main>;
+    }
+
+    const memberSince = new Date(user.created_at).toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
 
     return (
         <main className="profile-page">
@@ -21,9 +50,11 @@ export default function Profile() {
                         <FaUserCircle className="profile-avatar-icon" />
                     </div>
                     <div className="profile-identity">
-                        <h1 className="profile-name">{currentUser.name}</h1>
-                        <p className="profile-email">{currentUser.email}</p>
-                        <span className="profile-role-badge">{currentUser.role}</span>
+                        <h1 className="profile-name">{user.name}</h1>
+                        <p className="profile-email">{user.email}</p>
+                        <span className="profile-role-badge">
+                            {user.role === 'admin' ? 'Administrateur' : 'Utilisateur standard'}
+                        </span>
                     </div>
                     <Link to="/settings" className="profile-edit-btn">
                         <FaEdit /> Modifier le profil
@@ -32,7 +63,7 @@ export default function Profile() {
 
                 <div className="profile-meta">
                     <FaCalendarAlt className="profile-meta-icon" />
-                    Membre depuis {currentUser.memberSince}
+                    Membre depuis {memberSince}
                 </div>
             </div>
 
@@ -40,7 +71,7 @@ export default function Profile() {
                 <div className="profile-stat-card">
                     <FaCar className="profile-stat-icon" />
                     <div className="profile-stat-text">
-                        <span className="profile-stat-value">{vehicles.length}</span>
+                        <span className="profile-stat-value">{vehicleCount}</span>
                         <span className="profile-stat-label">Véhicules suivis</span>
                     </div>
                 </div>

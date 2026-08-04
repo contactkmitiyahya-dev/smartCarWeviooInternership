@@ -19,7 +19,8 @@ import ForgotPassword from './components/auth/ForgotPassword.js';
 import NotFound from './pages/NotFound.js';
 import ProtectedRoute from './components/ProtectedRoute.js';
 import AddVehicle from './pages/app/AddVehicle.js'; 
-import EditVehicle from './pages/app/EditVehicle.js'
+import EditVehicle from './pages/app/EditVehicle.js';
+import AuthCallback from './context/AuthCallback.js'
 export default function App() {
     return (
         <Layout>
@@ -28,6 +29,7 @@ export default function App() {
             <Route path="/auth/login" element={<Login />} />
             <Route path="/auth/register" element={<Register />} />
             <Route path="/auth/forgot-password" element={<ForgotPassword />} />
+            <Route path="/auth/callback" element={<AuthCallback />} />
             <Route path="/userDashboard" element={<ProtectedRoute><UserDashboard /></ProtectedRoute>} />
             <Route path="/vehicles" element={<ProtectedRoute><VehiclesList /></ProtectedRoute>} />
             <Route path="/vehicles/new" element={<ProtectedRoute><AddVehicle /></ProtectedRoute>} />

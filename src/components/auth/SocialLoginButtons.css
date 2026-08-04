@@ -69,3 +69,10 @@
   color: var(--c-muted);
   transition: all 0.25s var(--ease);
 }
+
+@media (max-width: 480px) {
+  .social-login {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

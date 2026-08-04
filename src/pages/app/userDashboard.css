@@ -44,3 +44,27 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 768px) {
+  .app-dashboard {
+    padding: 155px 16px 40px;
+  }
+
+  .app-dashboard-title {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-dashboard {
+    padding: 170px 12px 32px;
+  }
+
+  .app-dashboard-title {
+    font-size: 1.2rem;
+  }
+
+  .app-dashboard-subtitle {
+    font-size: 0.82rem;
+  }
+}

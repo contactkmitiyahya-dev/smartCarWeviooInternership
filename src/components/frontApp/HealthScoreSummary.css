@@ -48,4 +48,20 @@
   .health-summary {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .health-summary-item {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+
+  .health-summary-value {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .health-summary {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
 }

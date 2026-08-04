@@ -119,3 +119,15 @@
   min-width: 24px;
   text-align: right;
 }
+
+@media (max-width: 640px) {
+  .vehicle-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .vehicle-card {
+    padding: 18px 16px;
+  }
+}

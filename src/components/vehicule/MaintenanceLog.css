@@ -65,3 +65,14 @@
   font-weight: 700;
   color: var(--c-text);
 }
+
+@media (max-width: 480px) {
+  .maintenance-log-item {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px;
+  }
+  .maintenance-log-cost {
+    margin-left: auto;
+  }
+}

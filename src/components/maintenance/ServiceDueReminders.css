@@ -68,3 +68,14 @@
   border: 1px solid;
   flex-shrink: 0;
 }
+
+@media (max-width: 480px) {
+  .service-due-item {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px;
+  }
+  .service-due-badge {
+    margin-left: auto;
+  }
+}

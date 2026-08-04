@@ -47,22 +47,24 @@ export default function Maintenance() {
     }, [id]);
 
     const handleAddService = async (formData) => {
-        try {
-            const result = await apiFetch(`/maintenance/vehicles/${id}`, {
-                method: 'POST',
-                body: JSON.stringify({
-                    service_date: formData.date,
-                    service_type: formData.type,
-                    mileage_at_service_km: Number(formData.mileage),
-                    cost: formData.cost !== '' ? Number(formData.cost) : null,
-                    notes: formData.notes || null
-                })
-            });
-            setHistory([result.record, ...history]);
-        } catch (err) {
-            setError(err instanceof ApiError ? err.message : 'Erreur lors de l\'ajout de l\'entretien.');
-        }
-    };
+    try {
+        const result = await apiFetch(`/maintenance/vehicles/${id}`, {
+            method: 'POST',
+            body: JSON.stringify({
+                service_date: formData.date,
+                service_type: formData.type,
+                mileage_at_service_km: Number(formData.mileage),
+                cost: formData.cost !== '' ? Number(formData.cost) : null,
+                notes: formData.notes || null,
+                next_due_date: formData.nextDueDate || null,
+                next_due_km: formData.nextDueMileage || null
+            })
+        });
+        setHistory([result.record, ...history]);
+    } catch (err) {
+        setError(err instanceof ApiError ? err.message : 'Erreur lors de l\'ajout de l\'entretien.');
+    }
+};
 
     const mappedHistory = history.map(r => ({
         id: r.id,

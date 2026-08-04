@@ -35,3 +35,14 @@
 .quick-action-icon {
   font-size: 0.85rem;
 }
+
+@media (max-width: 480px) {
+  .quick-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .quick-action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

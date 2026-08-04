@@ -26,3 +26,15 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 768px) {
+  .vehicle-detail-page {
+    padding: 155px 16px 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .vehicle-detail-page {
+    padding: 170px 12px 32px;
+  }
+}

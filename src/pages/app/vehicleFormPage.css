@@ -44,3 +44,27 @@
   background: var(--c-surface);
   border: 1px solid var(--c-border);
 }
+
+@media (max-width: 768px) {
+  .vehicle-form-page {
+    padding: 155px 16px 40px;
+  }
+
+  .vehicle-form-title {
+    font-size: 1.3rem;
+  }
+
+  .vehicle-form-card {
+    padding: 20px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .vehicle-form-page {
+    padding: 170px 12px 32px;
+  }
+
+  .vehicle-form-title {
+    font-size: 1.15rem;
+  }
+}

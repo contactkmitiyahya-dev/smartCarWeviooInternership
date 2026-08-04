@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = Navbar;
+var _react = require("react");
 var _reactRouterDom = require("react-router-dom");
 var _fa = require("react-icons/fa");
 var _AuthContext = require("../context/AuthContext");
@@ -13,6 +14,12 @@ function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present,
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 function Navbar() {
   var location = (0, _reactRouterDom.useLocation)();
   var navigate = (0, _reactRouterDom.useNavigate)();
@@ -20,6 +27,10 @@ function Navbar() {
     isAuthenticated = _useAuth.isAuthenticated,
     isLoading = _useAuth.isLoading,
     logout = _useAuth.logout;
+  var _useState = (0, _react.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    isOpen = _useState2[0],
+    setIsOpen = _useState2[1];
   var isActive = function isActive(path) {
     return location.pathname === path ? 'active' : '';
   };
@@ -59,6 +70,7 @@ function Navbar() {
       return _regenerator().w(function (_context) {
         while (1) switch (_context.n) {
           case 0:
+            setIsOpen(false);
             _context.n = 1;
             return logout();
           case 1:
@@ -72,6 +84,12 @@ function Navbar() {
       return _ref.apply(this, arguments);
     };
   }();
+  var toggleMenu = function toggleMenu() {
+    return setIsOpen(!isOpen);
+  };
+  var closeMenu = function closeMenu() {
+    return setIsOpen(false);
+  };
   if (isLoading) {
     return /*#__PURE__*/(0, _jsxRuntime.jsx)("header", {
       className: "glass-header",
@@ -89,21 +107,22 @@ function Navbar() {
     });
   }
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("header", {
-    className: "glass-header",
+    className: "glass-header ".concat(isOpen ? 'menu-open' : ''),
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: "header-brand",
       children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRouterDom.Link, {
-        to: isAuthenticated ? '/dashboard' : '/',
+        to: isAuthenticated ? '/userDashboard' : '/',
         className: "logo-link",
+        onClick: closeMenu,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_fa.FaCar, {
-          className: "logo-icon"
+          className: "logo-icon-brand"
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           className: "logo-text",
           children: "SmartCar"
         })]
       })
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("nav", {
-      className: "glass-nav",
+      className: "glass-nav desktop-only",
       children: navItems.map(function (item) {
         var Icon = item.icon;
         return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRouterDom.Link, {
@@ -118,7 +137,7 @@ function Navbar() {
         }, item.path);
       })
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      className: "header-auth",
+      className: "header-auth desktop-only",
       children: isAuthenticated ? /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Link, {
           to: "/notifications",
@@ -168,6 +187,90 @@ function Navbar() {
           })
         })]
       })
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+      className: "hamburger-btn",
+      onClick: toggleMenu,
+      "aria-label": "Toggle menu",
+      children: isOpen ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_fa.FaTimes, {}) : /*#__PURE__*/(0, _jsxRuntime.jsx)(_fa.FaBars, {})
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      className: "mobile-menu-panel ".concat(isOpen ? 'show' : ''),
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("nav", {
+        className: "mobile-nav",
+        children: navItems.map(function (item) {
+          var Icon = item.icon;
+          return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRouterDom.Link, {
+            to: item.path,
+            className: "mobile-nav-item ".concat(isActive(item.path)),
+            onClick: closeMenu,
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(Icon, {
+              className: "mobile-nav-icon"
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+              children: item.label
+            })]
+          }, item.path);
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        className: "mobile-auth",
+        children: isAuthenticated ? /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+          className: "mobile-auth-grid",
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRouterDom.Link, {
+            to: "/notifications",
+            className: "mobile-nav-item ".concat(isActive('/notifications')),
+            onClick: closeMenu,
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_fa.FaBell, {
+              className: "mobile-nav-icon"
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+              children: "Notifications"
+            })]
+          }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRouterDom.Link, {
+            to: "/settings",
+            className: "mobile-nav-item ".concat(isActive('/settings')),
+            onClick: closeMenu,
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_fa.FaCog, {
+              className: "mobile-nav-icon"
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+              children: "Param\xE8tres"
+            })]
+          }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRouterDom.Link, {
+            to: "/profile",
+            className: "mobile-profile-btn ".concat(isActive('/profile')),
+            onClick: closeMenu,
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_fa.FaUserCircle, {
+              className: "mobile-nav-icon"
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+              children: "Mon Profil"
+            })]
+          }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+            type: "button",
+            className: "mobile-logout-btn",
+            onClick: handleLogout,
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_fa.FaSignOutAlt, {
+              className: "mobile-nav-icon"
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+              children: "Se d\xE9connecter"
+            })]
+          })]
+        }) : /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+          className: "mobile-guest-actions",
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRouterDom.Link, {
+            to: "/auth/login",
+            className: "mobile-signin-btn",
+            onClick: closeMenu,
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_fa.FaSignInAlt, {
+              className: "signin-icon"
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+              children: "Se connecter"
+            })]
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Link, {
+            to: "/auth/register",
+            className: "mobile-cta-btn",
+            onClick: closeMenu,
+            children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+              children: "Commencer"
+            })
+          })]
+        })
+      })]
     })]
   });
 }

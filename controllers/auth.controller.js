@@ -304,4 +304,82 @@ async function resetPassword(req, res) {
     }
 }
 
-module.exports = { register, login, refresh, logout, getMe, forgotPassword, resetPassword };
+async function updateMe(req, res) {
+    try {
+        const { name, email } = req.body;
+
+        if (!name && !email) {
+            return res.status(400).json({ error: 'Aucune donnée à mettre à jour.' });
+        }
+
+        if (email) {
+            const existing = await pool.query('SELECT id FROM users WHERE email = $1 AND id != $2', [email, req.user.id]);
+            if (existing.rows.length > 0) {
+                return res.status(409).json({ error: 'Cet email est déjà utilisé par un autre compte.' });
+            }
+        }
+
+        const result = await pool.query(
+            `UPDATE users SET name = COALESCE($1, name), email = COALESCE($2, email), updated_at = NOW()
+             WHERE id = $3
+             RETURNING id, email, name, role, language, created_at`,
+            [name || null, email || null, req.user.id]
+        );
+
+        return res.json({ message: 'Profil mis à jour.', user: result.rows[0] });
+    } catch (err) {
+        console.error('Erreur updateMe:', err);
+        return res.status(500).json({ error: 'Erreur serveur.' });
+    }
+}
+
+async function changePassword(req, res) {
+    try {
+        const { currentPassword, newPassword } = req.body;
+
+        if (!currentPassword || !newPassword) {
+            return res.status(400).json({ error: 'Mot de passe actuel et nouveau mot de passe requis.' });
+        }
+        if (newPassword.length < 8) {
+            return res.status(400).json({ error: 'Le nouveau mot de passe doit contenir au moins 8 caractères.' });
+        }
+
+        const result = await pool.query('SELECT password_hash FROM users WHERE id = $1', [req.user.id]);
+        const matches = await bcrypt.compare(currentPassword, result.rows[0].password_hash);
+
+        if (!matches) {
+            return res.status(401).json({ error: 'Mot de passe actuel incorrect.' });
+        }
+
+        const newHash = await bcrypt.hash(newPassword, SALT_ROUNDS);
+        await pool.query('UPDATE users SET password_hash = $1, updated_at = NOW() WHERE id = $2', [newHash, req.user.id]);
+
+        return res.json({ message: 'Mot de passe modifié avec succès.' });
+    } catch (err) {
+        console.error('Erreur changePassword:', err);
+        return res.status(500).json({ error: 'Erreur serveur.' });
+    }
+}
+
+async function oauthCallback(req, res) {
+    try {
+        const user = req.user; // set by passport
+        const accessToken = generateAccessToken(user);
+        const refreshToken = generateRefreshToken(user);
+        const refreshTokenHash = await bcrypt.hash(refreshToken, SALT_ROUNDS);
+        const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+
+        await pool.query(
+            `INSERT INTO refresh_tokens (user_id, token_hash, expires_at) VALUES ($1, $2, $3)`,
+            [user.id, refreshTokenHash, expiresAt]
+        );
+
+        const redirectUrl = `${process.env.CLIENT_URL}/auth/callback?accessToken=${accessToken}&refreshToken=${refreshToken}`;
+        return res.redirect(redirectUrl);
+    } catch (err) {
+        console.error('Erreur oauthCallback:', err);
+        return res.redirect(`${process.env.CLIENT_URL}/auth/login?error=oauth_failed`);
+    }
+}
+
+module.exports = { register, login, refresh, logout, getMe, forgotPassword, resetPassword, updateMe, changePassword, oauthCallback };

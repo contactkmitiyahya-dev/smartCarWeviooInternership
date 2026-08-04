@@ -75,3 +75,14 @@
   color: var(--c-muted);
   flex-shrink: 0;
 }
+
+@media (max-width: 480px) {
+  .dtc-item {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px;
+  }
+  .dtc-date {
+    margin-left: auto;
+  }
+}

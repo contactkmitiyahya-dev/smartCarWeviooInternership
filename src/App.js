@@ -20,15 +20,17 @@ import NotFound from './pages/NotFound.js';
 import ProtectedRoute from './components/ProtectedRoute.js';
 import AddVehicle from './pages/app/AddVehicle.js'; 
 import EditVehicle from './pages/app/EditVehicle.js';
-import AuthCallback from './context/AuthCallback.js'
+import AuthCallback from './context/AuthCallback.js';
+import GuestRoute from './components/GuestRoute.js';
+
 export default function App() {
     return (
         <Layout>
         <Routes>
             <Route path='/' element={<Dashboard/>}/>
-            <Route path="/auth/login" element={<Login />} />
-            <Route path="/auth/register" element={<Register />} />
-            <Route path="/auth/forgot-password" element={<ForgotPassword />} />
+            <Route path="/auth/login" element={<GuestRoute><Login /></GuestRoute>} />
+            <Route path="/auth/register" element={<GuestRoute><Register /></GuestRoute>} />
+            <Route path="/auth/forgot-password" element={<GuestRoute><ForgotPassword /></GuestRoute>} />
             <Route path="/auth/callback" element={<AuthCallback />} />
             <Route path="/userDashboard" element={<ProtectedRoute><UserDashboard /></ProtectedRoute>} />
             <Route path="/vehicles" element={<ProtectedRoute><VehiclesList /></ProtectedRoute>} />

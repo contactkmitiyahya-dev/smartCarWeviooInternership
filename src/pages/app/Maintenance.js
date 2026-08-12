@@ -94,7 +94,7 @@ export default function Maintenance() {
         return (
             <main className="maintenance-page">
                 <p className="vehicle-not-found">
-                    {error} <Link to="/dashboard">Retour au tableau de bord</Link>
+                    {error} <Link to="/userDashboard">Retour au tableau de bord</Link>
                 </p>
             </main>
         );

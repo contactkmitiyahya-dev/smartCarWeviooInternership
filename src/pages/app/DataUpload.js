@@ -42,7 +42,7 @@ export default function DataUpload() {
     if (error && !vehicle) {
         return (
             <main className="upload-page">
-                <p className="vehicle-not-found">{error} <Link to="/dashboard">Retour au tableau de bord</Link></p>
+                <p className="vehicle-not-found">{error} <Link to="/userDashboard">Retour au tableau de bord</Link></p>
             </main>
         );
     }

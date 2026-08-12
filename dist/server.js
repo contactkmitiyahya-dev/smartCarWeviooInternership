@@ -14,6 +14,19 @@ var passport = require('passport');
 app.use(passport.initialize());
 var _require = require('./context/AuthContext'),
   AuthProvider = _require.AuthProvider;
+var authRoutes = require('../routes/auth.routes');
+var vehicleRoutes = require('../routes/vehicles.routes');
+var maintenanceRoutes = require('../routes/maintenance.routes');
+var notificationRoutes = require('../routes/notification.routes');
+var uploadsRoutes = require('../routes/uploads.routes');
+var dtcRoutes = require('../routes/dtc.routes');
+app.use(_express["default"].json());
+app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/vehicles', vehicleRoutes);
+app.use('/api/v1/maintenance', maintenanceRoutes);
+app.use('/api/v1/notifications', notificationRoutes);
+app.use('/api/v1', uploadsRoutes);
+app.use('/api/v1', dtcRoutes);
 app.use(_express["default"]["static"]('public'));
 app.get('/{*splat}', function (req, res) {
   var html = (0, _server.renderToString)(/*#__PURE__*/_react["default"].createElement(_server2.StaticRouter, {

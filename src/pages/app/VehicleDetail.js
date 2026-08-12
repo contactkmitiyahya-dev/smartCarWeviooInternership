@@ -64,7 +64,7 @@ export default function VehicleDetail() {
         return (
             <main className="vehicle-detail-page">
                 <p className="vehicle-not-found">
-                    {error || 'Véhicule introuvable.'} <Link to="/dashboard">Retour au tableau de bord</Link>
+                    {error || 'Véhicule introuvable.'} <Link to="/userDashboard">Retour au tableau de bord</Link>
                 </p>
             </main>
         );

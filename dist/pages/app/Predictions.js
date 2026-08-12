@@ -25,7 +25,7 @@ function Predictions() {
       children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("p", {
         className: "vehicle-not-found",
         children: ["Donn\xE9es de pr\xE9diction indisponibles. ", /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Link, {
-          to: "/dashboard",
+          to: "/userDashboard",
           children: "Retour au tableau de bord"
         })]
       })

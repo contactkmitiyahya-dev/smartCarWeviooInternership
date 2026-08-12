@@ -27,6 +27,7 @@ var _ProtectedRoute = _interopRequireDefault(require("./components/ProtectedRout
 var _AddVehicle = _interopRequireDefault(require("./pages/app/AddVehicle.js"));
 var _EditVehicle = _interopRequireDefault(require("./pages/app/EditVehicle.js"));
 var _AuthCallback = _interopRequireDefault(require("./context/AuthCallback.js"));
+var _GuestRoute = _interopRequireDefault(require("./components/GuestRoute.js"));
 var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function App() {
@@ -37,13 +38,19 @@ function App() {
         element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_dashboard["default"], {})
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
         path: "/auth/login",
-        element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Login["default"], {})
+        element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_GuestRoute["default"], {
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Login["default"], {})
+        })
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
         path: "/auth/register",
-        element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Register["default"], {})
+        element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_GuestRoute["default"], {
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Register["default"], {})
+        })
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
         path: "/auth/forgot-password",
-        element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ForgotPassword["default"], {})
+        element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_GuestRoute["default"], {
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ForgotPassword["default"], {})
+        })
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
         path: "/auth/callback",
         element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_AuthCallback["default"], {})

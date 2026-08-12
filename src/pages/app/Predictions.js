@@ -16,7 +16,7 @@ export default function Predictions() {
         return (
             <main className="predictions-page">
                 <p className="vehicle-not-found">
-                    Données de prédiction indisponibles. <Link to="/dashboard">Retour au tableau de bord</Link>
+                    Données de prédiction indisponibles. <Link to="/userDashboard">Retour au tableau de bord</Link>
                 </p>
             </main>
         );

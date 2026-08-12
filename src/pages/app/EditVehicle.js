@@ -50,7 +50,7 @@ export default function EditVehicle() {
         return (
             <main className="vehicle-form-page">
                 <p className="vehicle-not-found">
-                    {error} <Link to="/dashboard">Retour au tableau de bord</Link>
+                    {error} <Link to="/userDashboard">Retour au tableau de bord</Link>
                 </p>
             </main>
         );

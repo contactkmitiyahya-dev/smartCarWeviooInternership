@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { } = require('../middleware/auth');
+const { requireAuth } = require('../middleware/auth');
 const { register, login, refresh, logout, getMe, forgotPassword, resetPassword, oauthCallback, updateMe, changePassword } = require('../controllers/auth.controller');
 const passport = require('../config/passport.js');
 
@@ -10,9 +10,9 @@ router.post('/refresh', refresh);
 router.post('/logout', logout);
 router.post('/forgot-password', forgotPassword);
 router.post('/reset-password', resetPassword);
-router.get('/me', , getMe);
-router.put('/me', , updateMe);
-router.put('/me/change-password', , changePassword);
+router.get('/me', requireAuth, getMe);
+router.put('/me', requireAuth, updateMe);
+router.put('/me/change-password', requireAuth, changePassword);
 
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'], session: false }));
 router.get('/google/callback',

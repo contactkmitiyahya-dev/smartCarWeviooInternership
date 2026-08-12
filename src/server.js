@@ -12,6 +12,21 @@ const passport = require('passport');
 app.use(passport.initialize())
 const { AuthProvider } = require('./context/AuthContext');
 
+const authRoutes         = require('../routes/auth.routes');
+const vehicleRoutes      = require('../routes/vehicles.routes');
+const maintenanceRoutes  = require('../routes/maintenance.routes');
+const notificationRoutes = require('../routes/notification.routes');
+const uploadsRoutes      = require('../routes/uploads.routes');
+const dtcRoutes          = require('../routes/dtc.routes');
+
+app.use(express.json());
+app.use('/api/v1/auth',          authRoutes);
+app.use('/api/v1/vehicles',      vehicleRoutes);
+app.use('/api/v1/maintenance',   maintenanceRoutes);
+app.use('/api/v1/notifications', notificationRoutes);
+app.use('/api/v1',               uploadsRoutes);
+app.use('/api/v1',               dtcRoutes);
+
 app.use(express.static('public'));
 
 app.get('/{*splat}', (req, res) => {

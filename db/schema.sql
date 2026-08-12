@@ -14,9 +14,14 @@ CREATE TABLE users (
     language VARCHAR(5) NOT NULL DEFAULT 'fr',
     email_verified BOOLEAN NOT NULL DEFAULT false,
     notification_prefs JSONB NOT NULL DEFAULT '{}',
+    oauth_provider VARCHAR(20),
+    oauth_id       VARCHAR(100),
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+CREATE UNIQUE INDEX idx_users_oauth ON users(oauth_provider, oauth_id)
+    WHERE oauth_provider IS NOT NULL;
 
 -- ============================================
 -- VEHICLES
@@ -165,3 +170,15 @@ CREATE TABLE refresh_tokens (
 );
 
 CREATE INDEX idx_refresh_tokens_user_id ON refresh_tokens(user_id);
+
+-- ============================================
+-- MIGRATION — à exécuter sur une base existante
+-- (inutile si vous appliquez ce schema.sql from scratch)
+-- ============================================
+-- ALTER TABLE users
+--     ADD COLUMN IF NOT EXISTS oauth_provider VARCHAR(20),
+--     ADD COLUMN IF NOT EXISTS oauth_id       VARCHAR(100);
+--
+-- CREATE UNIQUE INDEX IF NOT EXISTS idx_users_oauth
+--     ON users(oauth_provider, oauth_id)
+--     WHERE oauth_provider IS NOT NULL;

@@ -5,7 +5,7 @@ import RiskGauge from '../../components/predictions/RiskGauge';
 import ComponentRiskCards from '../../components/predictions/ComponentRiskCards';
 import RecommendationList from '../../components/predictions/RecommendationList';
 import ForecastChart from '../../components/predictions/ForecastChart';
-import './Predictions.css';
+import './predictions.css';
 
 export default function Predictions() {
     const { id } = useParams();

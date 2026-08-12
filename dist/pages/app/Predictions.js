@@ -11,7 +11,7 @@ var _RiskGauge = _interopRequireDefault(require("../../components/predictions/Ri
 var _ComponentRiskCards = _interopRequireDefault(require("../../components/predictions/ComponentRiskCards"));
 var _RecommendationList = _interopRequireDefault(require("../../components/predictions/RecommendationList"));
 var _ForecastChart = _interopRequireDefault(require("../../components/predictions/ForecastChart"));
-require("./Predictions.css");
+require("./predictions.css");
 var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function Predictions() {

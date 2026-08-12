@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { apiFetch, ApiError } from '../../api/client';
 import MaintenanceTimeline from '../../components/maintenance/MaintenanceTimeline';
 import ServiceDueReminders from '../../components/maintenance/ServiceDueReminders';
-import './Maintenance';
+import './maintenance.css';
 
 function computeUrgency(dueDateStr) {
     const daysLeft = (new Date(dueDateStr) - new Date()) / (1000 * 60 * 60 * 24);

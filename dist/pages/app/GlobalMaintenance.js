@@ -8,7 +8,7 @@ var _react = require("react");
 var _client = require("../../api/client");
 var _MaintenanceTimeline = _interopRequireDefault(require("../../components/maintenance/MaintenanceTimeline"));
 var _ServiceDueReminders = _interopRequireDefault(require("../../components/maintenance/ServiceDueReminders"));
-require("./Maintenance");
+require("./maintenance.css");
 var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }

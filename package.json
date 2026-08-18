@@ -6,7 +6,7 @@
     "node": "20.x"
   },
   "scripts": {
-  "build:client": "node ./node_modules/webpack-cli/bin/cli.js --mode=production",
+  "build:client": "node ./node_modules/webpack-cli/bin/npx-cli.js --mode=production",
   "build:server": "babel src --out-dir dist",
   "build": "npm run build:client && npm run build:server",
   "start": "node dist/server.js",

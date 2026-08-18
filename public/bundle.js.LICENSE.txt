@@ -89,7 +89,7 @@
  */
 
 /**
- * @remix-run/router v1.23.3
+ * @remix-run/router v1.23.4
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -100,7 +100,7 @@
  */
 
 /**
- * React Router DOM v6.30.4
+ * React Router DOM v6.30.6
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -111,7 +111,7 @@
  */
 
 /**
- * React Router v6.30.4
+ * React Router v6.30.6
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -122,7 +122,7 @@
  */
 
 /**
- * postprocessing v6.39.2 build Sun Jun 28 2026
+ * postprocessing v6.39.4 build Mon Jul 27 2026
  * https://github.com/pmndrs/postprocessing
  * Copyright 2015-2026 Raoul van Rüschen
  * @license Zlib

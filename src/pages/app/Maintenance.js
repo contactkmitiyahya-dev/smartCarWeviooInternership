@@ -5,7 +5,7 @@ import { apiFetch, ApiError } from '../../api/client';
 import MaintenanceTimeline from '../../components/maintenance/MaintenanceTimeline';
 import ServiceDueReminders from '../../components/maintenance/ServiceDueReminders';
 import AddServiceForm from '../../components/maintenance/AddServiceForm';
-import './maintenance.css';
+import './Maintenance.css';
 
 function computeUrgency(dueDateStr) {
     const daysLeft = (new Date(dueDateStr) - new Date()) / (1000 * 60 * 60 * 24);

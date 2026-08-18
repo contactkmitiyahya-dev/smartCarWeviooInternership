@@ -6,7 +6,7 @@ import SensorCharts from '../../components/vehicule/SensorCharts';
 import DTCTimeline from '../../components/vehicule/DTCTimeline';
 import MaintenanceLog from '../../components/vehicule/MaintenanceLog';
 import HealthBreakdown from '../../components/vehicule/HealthBreakdown';
-import './vehicleDetail.css';
+import './VehicleDetail.css';
 
 export default function VehicleDetail() {
     const { id } = useParams();

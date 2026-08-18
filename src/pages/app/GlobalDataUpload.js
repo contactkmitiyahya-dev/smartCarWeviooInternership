@@ -5,7 +5,7 @@ import { getVehicleById, getUploadHistory } from '../../data/testData';
 import FileDropzone from '../../components/upload/FileDropzone';
 import UploadProgressBar from '../../components/upload/UploadProgressBar';
 import UploadHistory from '../../components/upload/UploadHistory';
-import './dataUpload.css';
+import './DataUpload.css';
 
 export default function DataUpload() {
     const { id } = useParams();
